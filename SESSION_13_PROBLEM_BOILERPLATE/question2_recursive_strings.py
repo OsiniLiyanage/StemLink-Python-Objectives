@@ -30,7 +30,10 @@ def reverse_string(s):
         (reverse the rest, then append the first character at the end)
     """
     # TODO: Implement reverse_string recursively
-    pass
+    if len(s) <=1:
+        return s
+    return reverse_string(s[1:]) +s[0]
+    
 
 
 def is_palindrome(s):
@@ -56,7 +59,12 @@ def is_palindrome(s):
         Recursive case: return is_palindrome(s[1:-1])
     """
     # TODO: Implement is_palindrome recursively
-    pass
+    if len(s) <= 1:
+        return True
+    if s[0] != s[-1]:
+        return False
+    return is_palindrome(s[1:-1])
+    
 
 
 def flatten(nested_list):
@@ -81,7 +89,15 @@ def flatten(nested_list):
         Return result
     """
     # TODO: Implement flatten recursively
-    pass
+    
+    result = []
+    for item in nested_list:
+        if isinstance(item,list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+
 
 
 # ============================================================
