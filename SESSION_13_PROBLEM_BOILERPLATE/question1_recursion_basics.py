@@ -30,7 +30,9 @@ def factorial(n):
         Recursive case: return n * factorial(n - 1)
     """
     # TODO: Implement factorial recursively
-    pass
+    if n <=1:
+        return 1
+    return n* factorial(n-1)
 
 
 def fibonacci(n):
@@ -54,7 +56,11 @@ def fibonacci(n):
         Recursive case: fib(n-1) + fib(n-2)
     """
     # TODO: Implement fibonacci recursively
-    pass
+    if n <=0:
+        return 0
+    if n==1:
+        return 1
+    return fibonacci(n-1) + fibonacci(n-2)
 
 
 def power(base, exp):
@@ -77,7 +83,9 @@ def power(base, exp):
         Recursive case: return base * power(base, exp - 1)
     """
     # TODO: Implement power recursively
-    pass
+    if exp ==0:
+        return 1
+    return base * power(base,exp -1)
 
 
 def recursive_sum(arr):
@@ -99,7 +107,9 @@ def recursive_sum(arr):
         Recursive case: return arr[0] + recursive_sum(arr[1:])
     """
     # TODO: Implement sum recursively
-    pass
+    if not arr:
+        return 0
+    return arr[0] + recursive_sum(arr[1:])
 
 
 # ============================================================
