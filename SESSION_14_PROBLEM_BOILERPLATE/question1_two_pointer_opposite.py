@@ -36,7 +36,18 @@ def two_sum_sorted(nums, target):
         3. return []
     """
     # TODO: Implement two_sum_sorted with opposite-direction two-pointer
-    pass
+    left,right =0, len(nums) -1
+
+    while left< right:
+        current_sum = nums[left] + nums[right]
+        if current_sum == target:
+            return[left,right]
+        elif current_sum < target:
+            left +=1
+        else:
+            right -=1
+    return []
+
 
 
 def is_valid_palindrome(s):
@@ -64,7 +75,19 @@ def is_valid_palindrome(s):
         3. return True
     """
     # TODO: Implement is_valid_palindrome with opposite-direction two-pointer
-    pass
+    
+    left,right =0, len(s) -1
+    while left <right:
+        while left< right and not s[left].isalnum():
+            left +=1
+        while left< right and not s[right].isalnum():
+            right -=1
+        
+        if s[left].lower() != s[right].lower():
+            return False
+        left += 1
+        right -=1
+    return True
 
 
 # ============================================================
