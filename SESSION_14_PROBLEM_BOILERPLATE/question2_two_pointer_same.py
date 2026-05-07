@@ -37,7 +37,16 @@ def remove_duplicates(nums):
         4. Return write
     """
     # TODO: Implement remove_duplicates with same-direction two-pointer
-    pass
+    if not nums:
+        return 0
+    
+    write =1
+    for read in range(1,len(nums)):
+        if nums[read] != nums[write-1]:
+            nums[write] =nums[read]
+            write += 1
+    return write
+
 
 
 def max_area(heights):
@@ -68,7 +77,20 @@ def max_area(heights):
         4. Return max_water
     """
     # TODO: Implement max_area with opposite-direction two-pointer
-    pass
+    
+    left,right = 0 ,len(heights) -1
+    max_water =0
+
+    while left < right:
+        width = right -left
+        height = min(heights[left],heights[right])
+        max_water = max(max_water,width*height)
+
+        if heights[left]< heights[right]:
+            left+= 1
+        else:
+            right -=1
+    return max_water
 
 
 # ============================================================
