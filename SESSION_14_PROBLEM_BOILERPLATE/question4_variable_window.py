@@ -40,7 +40,19 @@ def min_subarray_len(target, nums):
         5. Return min_len if min_len != float('inf') else 0
     """
     # TODO: Implement min_subarray_len with variable-size sliding window
-    pass
+    min_len = float('inf')
+    window_sum = 0
+    left=0
+
+    for right in range(len(nums)):
+        window_sum += nums[right]
+
+        while window_sum >= target:
+            min_len = min(min_len, right-left+1)
+            window_sum -= nums[left]
+            left+=1
+
+    return min_len if min_len != float('inf') else 0
 
 
 def length_of_longest_substring(s):
@@ -72,7 +84,20 @@ def length_of_longest_substring(s):
         5. Return max_len
     """
     # TODO: Implement length_of_longest_substring with variable-size window
-    pass
+    
+
+    char_set = set()
+    left=0
+    max_len =0
+
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left +=1
+
+        char_set.add(s[right])
+        max_len = max(max_len,right-left+1)
+    return max_len
 
 
 # ============================================================
