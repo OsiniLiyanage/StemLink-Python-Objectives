@@ -36,9 +36,20 @@ def max_sum_subarray(arr, k):
         5. Return max_sum
     """
     # TODO: Implement max_sum_subarray with fixed-size sliding window
-    pass
+    
+    if len(arr) <k:
+        return -1
+    
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
 
+    for i in range(k,len(arr)):
+        window_sum += arr[i] -arr[i-k]
+        max_sum = max(max_sum,window_sum)
 
+    return max_sum
+
+#not finished yet.
 def avg_subarrays(arr, k):
     """Return a list of averages for every contiguous subarray of size k.
 
@@ -64,7 +75,20 @@ def avg_subarrays(arr, k):
         5. Return result
     """
     # TODO: Implement avg_subarrays with fixed-size sliding window
-    pass
+    
+    if len(arr) <k:
+        return[]
+    window_sum = sum(arr[:k])
+    result =[window_sum/k]
+
+    for i in range(k, len(arr)):
+        window_sum += arr[i] - arr[i-k]
+        result.append(window_sum/k)
+
+    return result
+    
+
+
 
 
 # ============================================================
