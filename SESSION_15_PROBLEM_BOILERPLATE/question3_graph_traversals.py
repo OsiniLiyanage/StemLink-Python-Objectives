@@ -44,7 +44,17 @@ def bfs(graph, start):
         5. Return result
     """
     # TODO: Implement bfs
-    pass
+    visited = set([start])
+    queue = deque([start])
+    result =[]
+    while queue:
+        node = queue.popleft()
+        result.append(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    return result
 
 
 def dfs(graph, start):
@@ -79,7 +89,16 @@ def dfs(graph, start):
         return helper(start, set())
     """
     # TODO: Implement dfs (recursive)
-    pass
+    
+    def helper(node,visited):
+        visited.add(node)
+        result =[node]
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                result.extend(helper(neighbor,visited))
+        return result
+    return helper(start,set())
+
 
 
 # ============================================================
