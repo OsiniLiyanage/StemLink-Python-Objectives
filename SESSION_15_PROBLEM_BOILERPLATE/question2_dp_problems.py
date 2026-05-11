@@ -41,7 +41,17 @@ def coin_change(coins, amount):
     Base:       dp[0] = 0
     """
     # TODO: Implement coin_change with tabulation
-    pass
+    dp = [float('inf')]* (amount+1)
+    dp[0] =0
+    for i in range(1,amount+1):
+        for coin in coins:
+            if coin <=1:
+                dp[i] = min(dp[i],dp[i-coin]+1)
+    return dp[amount] if dp[amount] != float('inf') else -1
+
+
+
+
 
 
 def house_robber(nums):
@@ -76,7 +86,16 @@ def house_robber(nums):
     Base:       dp[0] = nums[0], dp[1] = max(nums[0], nums[1])
     """
     # TODO: Implement house_robber with tabulation
-    pass
+    if not nums:
+        return 0
+    if len(nums) ==1:
+        return nums[0]
+    dp = [0] *len(nums)
+    dp[0] = nums[0]
+    dp[1] = max(nums[0],nums[1])
+    for i in range(2,len(nums)):
+        dp[i] =max(dp[i-1],dp[i-2]+nums[i])
+    return dp[-1]
 
 
 # ============================================================
