@@ -52,7 +52,21 @@ def count_components(graph):
         4. Return count
     """
     # TODO: Implement count_components using BFS or DFS
-    pass
+    
+    visited = set()
+    count =0
+    for node in graph:
+        if node not in visited:
+            count +=1
+            queue = deque([node])
+            visited.add(node)
+            while queue:
+                curr = queue.popleft()
+                for neighbor in graph[curr]:
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+    return count
 
 
 def shortest_path(graph, start, end):
@@ -89,7 +103,20 @@ def shortest_path(graph, start, end):
         4. Return None
     """
     # TODO: Implement shortest_path with BFS
-    pass
+    
+
+    queue = deque([(start,[start])])
+    visited ={start}
+    while queue:
+        node,path = queue.popleft()
+        if node == end:
+            return path
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor,path + [neighbor]))
+    return None
+
 
 
 # ============================================================
