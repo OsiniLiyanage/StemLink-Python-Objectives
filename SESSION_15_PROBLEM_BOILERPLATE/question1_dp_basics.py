@@ -33,7 +33,15 @@ def climb_stairs(n):
         5. Return dp[n]
     """
     # TODO: Implement climb_stairs with tabulation
-    pass
+    
+    if n <= 2:
+        return n
+    dp = [0] * (n+1)
+    dp[1],dp[2] = 1,2
+    for i in range(3,n+1):
+        dp[i] = dp[i-1] +dp[i-2]
+    return dp[n]
+
 
 
 def fib_memo(n, memo=None):
@@ -62,7 +70,15 @@ def fib_memo(n, memo=None):
         5. Return memo[n]
     """
     # TODO: Implement fib_memo with memoization
-    pass
+    
+    if memo is None:
+        memo= {}
+    if n in memo:
+        return memo[n]
+    if n<= 1:
+            return n
+    memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
+    return memo[n]
 
 
 def fib_optimized(n):
@@ -91,7 +107,14 @@ def fib_optimized(n):
         4. Return prev1
     """
     # TODO: Implement fib_optimized with O(1) space
-    pass
+    if n <= 1:
+        return n
+    prev2,prev1 =0,1
+    for _ in range(2,n+1):
+        curr = prev1+prev2
+        prev2 = prev1
+        prev1 = curr
+    return prev1
 
 
 # ============================================================
