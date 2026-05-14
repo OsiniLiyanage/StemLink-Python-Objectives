@@ -38,7 +38,11 @@ def two_sum_brute(nums, target):
                     return [i, j]
     """
     # TODO: Implement two_sum_brute
-    pass
+    
+    for i in range(len(nums)):
+        for j in range (i +1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return[i,j]
 
 
 def two_sum_hash(nums, target):
@@ -67,7 +71,13 @@ def two_sum_hash(nums, target):
             seen[num] = i
     """
     # TODO: Implement two_sum_hash
-    pass
+    
+    seen ={}
+    for i , num in enumerate(nums):
+        partner = target - num
+        if partner in seen:
+            return [seen[partner],i]
+        seen[num] = i
 
 
 # ============================================================
