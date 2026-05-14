@@ -37,7 +37,13 @@ def count_pairs_brute(nums, k):
         return count
     """
     # TODO: Implement count_pairs_brute (nested loops)
-    pass
+    
+    count = 0
+    for i in range(len(nums)):
+        for j in range(i+1,len(nums)):
+            if nums[i] + nums[j] ==k:
+                count +=1
+    return count
 
 
 def count_pairs_fast(nums, k):
@@ -69,7 +75,14 @@ def count_pairs_fast(nums, k):
         return count
     """
     # TODO: Implement count_pairs_fast (hash map)
-    pass
+    
+    count = 0
+    seen ={}
+    for num in nums:
+        partner = k - num
+        count += seen.get(partner,0)
+        seen[num] = seen.get(num,0) +1
+    return count
 
 
 # ============================================================
