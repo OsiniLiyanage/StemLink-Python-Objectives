@@ -35,7 +35,9 @@ def kth_largest_sort(nums, k):
         return nums_sorted[-k]   # k-th from the end
     """
     # TODO: Implement kth_largest_sort
-    pass
+    
+    nums.sort()
+    return nums[-k]
 
 
 def kth_largest_heap(nums, k):
@@ -60,7 +62,16 @@ def kth_largest_heap(nums, k):
         return heap[0]                  # smallest in the size-k heap
     """
     # TODO: Implement kth_largest_heap
-    pass
+    
+    h =[]
+    for i in range(k):
+        heapq.heappush(h,nums[i])
+    for i in range(k,len(nums)):
+        if nums[i] > h[0]:
+            heapq.heappush(h,nums[i])
+            heapq.heappop(h)
+    return h[0]
+
 
 
 # ============================================================
